@@ -1,17 +1,16 @@
 import java.util.Scanner;
 
-public class PlayerInput {
+public class PlayerInput extends CheckCoordinates{
     private final String[] positionsOfShipsAndGrenade = new String[10];
 
     public PlayerInput(){
         Scanner scanner = new Scanner(System.in);
-        CheckCoordinates checkCoordinates = new CheckCoordinates();
-        loopingLogic(scanner, positionsOfShipsAndGrenade, checkCoordinates, "Enter the coordinates of your ship #%d: ",0,0,6);
+        loopingLogic(scanner, positionsOfShipsAndGrenade, "Enter the coordinates of your ship #%d: ",0,0,6);
         System.out.println("");
-        loopingLogic(scanner, positionsOfShipsAndGrenade, checkCoordinates, "Enter the coordinates of your grenade #%d: ",0,6,10);
+        loopingLogic(scanner, positionsOfShipsAndGrenade, "Enter the coordinates of your grenade #%d: ",0,6,10);
     }
 
-    private void loopingLogic(Scanner scanner, String[] positionsOfShipsAndGrenade, CheckCoordinates checkCoordinates, String userPrompt, int count, int startOfLoop, int endOfLoop) {
+    private void loopingLogic(Scanner scanner, String[] positionsOfShipsAndGrenade, String userPrompt, int count, int startOfLoop, int endOfLoop) {
         for (int i = startOfLoop; i < endOfLoop; i++) {
             count++;
             boolean flag= true;
@@ -19,9 +18,9 @@ public class PlayerInput {
                 try {
                     System.out.format(userPrompt, count);
                     String valueOfShipGrenade = scanner.next().toUpperCase();
-                    if (checkCoordinates.usedCoordinates(positionsOfShipsAndGrenade, valueOfShipGrenade)){
+                    if (usedCoordinates(positionsOfShipsAndGrenade, valueOfShipGrenade)){
                         throw new AlreadyInUseCoordinates();
-                    } else if (checkCoordinates.outsideGridCoordinates(valueOfShipGrenade)) {
+                    } else if (outsideGridCoordinates(valueOfShipGrenade)) {
                         throw new OutsideTheGridCoordinates();
                     } else {
                         positionsOfShipsAndGrenade[i] = valueOfShipGrenade;

@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public class CheckCoordinates {
-    public boolean usedCoordinates(String[] positionsOfShipsAndGrenade, String valueOfShip) {
+    protected boolean usedCoordinates(String[] positionsOfShipsAndGrenade, String valueOfShip) {
         for (String s : positionsOfShipsAndGrenade) {
             if (Objects.equals(valueOfShip, s)) {
                 return true;
@@ -10,7 +10,7 @@ public class CheckCoordinates {
         return false;
     }
 
-    public boolean outsideGridCoordinates(String valueOfShip) {
+    protected boolean outsideGridCoordinates(String valueOfShip) {
         if (valueOfShip.charAt(0) < 'A' || valueOfShip.charAt(0) > 'H') {
             return true;
         }

@@ -13,7 +13,9 @@ public class Battleship {
         System.out.println("May Force Be With You -Star Wars\n");
 
         PlayerInput playerInput = new PlayerInput();
+        ComputerInput computerInput = new ComputerInput(playerInput);
 
         System.out.println(playerInput);
+        System.out.println(computerInput);
     }
 }
