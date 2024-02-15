@@ -42,7 +42,7 @@ public class PlayerInput extends CheckCoordinates{
     public String toString(){
         String str = "";
         for(String s: positionsOfShipsAndGrenade){
-            str += s + "\n";
+            str += s + " ";
         }
         return str;
     }

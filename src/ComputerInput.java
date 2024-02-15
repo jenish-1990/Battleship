@@ -47,10 +47,14 @@ public class ComputerInput{
         return new String(charArray);
     }
 
+    public String[] getPositionsOfShipsAndGrenade() {
+        return positionsOfShipsAndGrenade;
+    }
+
     public String toString(){
         String str = "";
         for(String s: positionsOfShipsAndGrenade){
-            str += s + "\n";
+            str += s + " ";
         }
         return str;
     }
