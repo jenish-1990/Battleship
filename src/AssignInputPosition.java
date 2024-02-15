@@ -1,26 +1,30 @@
 public class AssignInputPosition {
-    protected String[][] convertInitialInputToArray = new String[8][8];
+    protected Position[][] convertInitialInputToArray = new Position[8][8];
 
     public AssignInputPosition(PlayerInput pInput, ComputerInput cInput){
         setConvertInitialInputToArray(convertInitialInputToArray);
-        assignPositionToArray(pInput.getPositionsOfShipsAndGrenade(), 's', 'g');
-        assignPositionToArray(cInput.getPositionsOfShipsAndGrenade(), 'S', 'G');
+        assignPositionToArray(pInput.getPositionsOfShipsAndGrenade(), "user");
+        assignPositionToArray(cInput.getPositionsOfShipsAndGrenade(), "computer");
     }
 
-    private void assignPositionToArray(String[] valueOfShipsAndGrenades, char ship, char grenade){
+    public AssignInputPosition() {
+
+    }
+
+    private void assignPositionToArray(String[] valueOfShipsAndGrenades, String owner){
         for (int k = 0; k < 10; k++) {
             int[] indexes = getIndexOf2DArray(valueOfShipsAndGrenades[k].toCharArray());
             int j = indexes[0];
             int i = indexes[1];
             if (k < 6) {
-                convertInitialInputToArray[i][j] = String.valueOf(ship);
+                convertInitialInputToArray[i][j] = new Position("ship", owner, false);
             } else {
-                convertInitialInputToArray[i][j] = String.valueOf(grenade);
+                convertInitialInputToArray[i][j] = new Position("grenade", owner, false);
             }
         }
     }
 
-    private int[] getIndexOf2DArray(char[] dataPoints){
+    protected int[] getIndexOf2DArray(char[] dataPoints){
         int[] tempArray = new int[2];
         switch (dataPoints[0]){
             case 'A':
@@ -52,15 +56,15 @@ public class AssignInputPosition {
         return tempArray;
     }
 
-    public void setConvertInitialInputToArray(String[][] convertInitialInputToArray) {
+    public void setConvertInitialInputToArray(Position[][] convertInitialInputToArray) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                convertInitialInputToArray[i][j] = "*";
+                convertInitialInputToArray[i][j] = new Position();
             }
         }
     }
 
-    public String[][] getConvertInitialInputToArray() {
+    public Position[][] getConvertInitialInputToArray() {
         return convertInitialInputToArray;
     }
 

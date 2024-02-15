@@ -4,6 +4,8 @@ import java.util.Random;
 public class ComputerInput{
     private final String[] positionsOfShipsAndGrenade = new String[10];
 
+    public ComputerInput(){}
+
     public ComputerInput(PlayerInput pInput){
         loopingLogic(pInput, positionsOfShipsAndGrenade, 0,6);
         loopingLogic(pInput, positionsOfShipsAndGrenade, 6,10);
@@ -34,7 +36,7 @@ public class ComputerInput{
         return false;
     }
 
-    protected String generateRandomString(){
+    public String generateRandomString(){
         String[] allowedLetters = new String[]{"ABCDEFGH", "12345678"};
         int length = 2;
         char[] charArray = new char[length];
