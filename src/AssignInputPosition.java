@@ -69,8 +69,9 @@ public class AssignInputPosition {
     }
 
     public void printArray(){
+        System.out.println("   A B C D E F G H");
         for (int i = 0; i < 8; i++) {
-            System.out.print(convertInitialInputToArray[i][0]);
+            System.out.print(i+1 + "  " + convertInitialInputToArray[i][0]);
             for (int j = 1; j < 8; j++) {
                 System.out.print(" " + convertInitialInputToArray[i][j]);
             }
