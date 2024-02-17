@@ -4,8 +4,8 @@ import java.util.Scanner;
  * This class is a part of the submission for COMP249 Assignment 1.
  * <p>
  * Name(s) and ID(s):
- * - Jenish Pravinbhai Akhed, 40270365
- * - Shruti Hiteshbhai Pavasiya, 40270486
+ * @auhtor Jenish Pravinbhai Akhed, 40270365
+ * @author Shruti Hiteshbhai Pavasiya, 40270486
  * <p>
  * Assignment 1
  * <p>
