@@ -1,6 +1,26 @@
+// -----------------------------------------------------
+// Assignment 1
+// &#169; Jenish Pravinbhai Akhed, Shruti Hiteshbhai Pavasiya
+// Written by: Jenish Pravinbhai Akhed (40270365), Shruti Hiteshbhai Pavasiya (40270486)
+// -----------------------------------------------------
+
+/**
+ * The {@code AssignInputPosition} class is responsible for assigning positions of ships and grenades on the game board
+ * for both the player and the computer. It initializes the game board with these positions based on the inputs provided.
+ *
+ * This class plays a crucial role in the setup phase of the Battleship game, ensuring that both player and computer
+ * have their ships and grenades positioned on the board before the game begins.
+ */
 public class AssignInputPosition {
     protected Position[][] convertInitialInputToArray = new Position[8][8];
 
+    /**
+     * Constructs an {@code AssignInputPosition} object and initializes the game board with ships and grenades
+     * based on player and computer inputs.
+     *
+     * @param pInput The player input containing positions for ships and grenades.
+     * @param cInput The computer input containing positions for ships and grenades.
+     */
     public AssignInputPosition(PlayerInput pInput, ComputerInput cInput){
         setConvertInitialInputToArray(convertInitialInputToArray);
         assignPositionToArray(pInput.getPositionsOfShipsAndGrenade(), "user");
@@ -8,9 +28,15 @@ public class AssignInputPosition {
     }
 
     public AssignInputPosition() {
-
+        // Default constructor for creating an instance without initializing positions immediately.
     }
 
+    /**
+     * Assigns ships and grenades to specified positions on the game board.
+     *
+     * @param valueOfShipsAndGrenades Array of strings representing positions of ships and grenades.
+     * @param owner Specifies whether the positions belong to the user or computer.
+     */
     private void assignPositionToArray(String[] valueOfShipsAndGrenades, String owner){
         for (int k = 0; k < 10; k++) {
             int[] indexes = getIndexOf2DArray(valueOfShipsAndGrenades[k].toCharArray());
@@ -24,6 +50,12 @@ public class AssignInputPosition {
         }
     }
 
+    /**
+     * Converts character inputs into array indexes for positioning on the game board.
+     *
+     * @param dataPoints Character array representing input positions (e.g., A1, B2).
+     * @return Array of integers representing indexes on the game board.
+     */
     protected int[] getIndexOf2DArray(char[] dataPoints){
         int[] tempArray = new int[2];
         switch (dataPoints[0]){
@@ -56,6 +88,11 @@ public class AssignInputPosition {
         return tempArray;
     }
 
+    /**
+     * Initializes the game board with default {@code Position} objects.
+     *
+     * @param convertInitialInputToArray The game board to be initialized.
+     */
     public void setConvertInitialInputToArray(Position[][] convertInitialInputToArray) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -64,10 +101,18 @@ public class AssignInputPosition {
         }
     }
 
+    /**
+     * Retrieves the current state of the game board.
+     *
+     * @return The game board array of {@code Position} objects.
+     */
     public Position[][] getConvertInitialInputToArray() {
         return convertInitialInputToArray;
     }
 
+    /**
+     * Prints the current state of the game board to the console.
+     */
     public void printArray(){
         System.out.println("   A B C D E F G H");
         for (int i = 0; i < 8; i++) {

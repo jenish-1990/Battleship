@@ -1,14 +1,34 @@
-public class Position {
-    private String typeOfElement;
-    private String ownerOfElement;
-    private boolean positionCalledStatus;
-    private boolean hidden;
+// -----------------------------------------------------
+// Assignment 1
+// &#169; Jenish Pravinbhai Akhed, Shruti Hiteshbhai Pavasiya
+// Written by: Jenish Pravinbhai Akhed (40270365), Shruti Hiteshbhai Pavasiya (40270486)
+// -----------------------------------------------------
 
+/**
+ * Represents a position on the Battleship game board. Each position can hold a ship, a grenade,
+ * or be empty ("nothing"), and belongs to either the user or the computer. Positions can also be hidden or revealed.
+ */
+public class Position {
+    private String typeOfElement; // "ship", "grenade", or "nothing"
+    private String ownerOfElement; // "user" or "computer"
+    private boolean positionCalledStatus; // Whether this position has been called
+    private boolean hidden; // Whether this position's contents should be shown
+
+    /**
+     * Constructs a default {@code Position} object with type "nothing" and marked as hidden.
+     */
     public Position(){
         this.typeOfElement = "nothing";
         this.hidden = true;
     }
 
+    /**
+     * Constructs a {@code Position} with specified attributes.
+     *
+     * @param typeOfElement The type of element ("ship", "grenade", or "nothing").
+     * @param ownerOfElement The owner of the element ("user" or "computer").
+     * @param positionCalledStatus Whether the position has been called.
+     */
     public Position(String typeOfElement, String ownerOfElement, boolean positionCalledStatus) {
         this.typeOfElement = typeOfElement;
         this.ownerOfElement = ownerOfElement;
@@ -16,6 +36,7 @@ public class Position {
         this.hidden = true;
     }
 
+    // Getter and setter methods
     public String getTypeOfElement() {
         return typeOfElement;
     }
@@ -64,6 +85,12 @@ public class Position {
         return "G";
     }
 
+    /**
+     * Returns a string representation of this position, showing different symbols based on the position's state
+     * and content.
+     *
+     * @return A single-character string representing the state of the position.
+     */
     public String toString(){
         String str = "";
         if (!isHidden()){

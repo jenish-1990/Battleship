@@ -1,5 +1,28 @@
 import java.util.Scanner;
 
+// -----------------------------------------------------
+// Assignment 1
+// &#169; Jenish Pravinbhai Akhed, Shruti Hiteshbhai Pavasiya
+// Written by: Jenish Pravinbhai Akhed (40270365), Shruti Hiteshbhai Pavasiya (40270486)
+// -----------------------------------------------------
+
+/**
+ * The {@code GameEngine} class manages the gameplay logic for the Battleship game. It keeps track of
+ * the total ships each player has, handles the turn-based gameplay, and checks for game over conditions.
+ * <p>
+ * This class uses instances of {@link PlayerInput}, {@link ComputerInput}, {@link AssignInputPosition},
+ * and {@link CheckCoordinates} to manage the game's state, including ship and grenade positions, and to
+ * handle user and computer turns.
+ * </p>
+ *
+ * Main steps in the gameplay loop:
+ * 1. Initialize the game with player and computer inputs.
+ * 2. Loop through turns, allowing the user and computer to fire rockets in turn.
+ * 3. Check for hits, misses, or grenade explosions and update the game state accordingly.
+ * 4. Switch turns between the user and computer, considering special conditions like grenade explosions.
+ * 5. Check if the game is over by determining if any player has lost all their ships.
+ */
+
 public class GameEngine{
     public static int userTotalShips = 6;
     public static int computerTotalShips = 6;
@@ -13,12 +36,15 @@ public class GameEngine{
     private boolean computerSkip = false;
     Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Initializes the game engine, including setting up player and computer inputs and positions.
+     */
     public GameEngine() {
         playerInput = new PlayerInput();
         computerInput = new ComputerInput(playerInput);
         checkCoordinates = new CheckCoordinates();
 
-        System.out.println("\nOK, the computer has placed its ships and grenades at random. Let’s play the battleship. \n");
+        System.out.println("\nOK, the computer has placed its ships and grenades at random. Lets play the battleship. \n");
 
         assignInputPosition = new AssignInputPosition(playerInput, computerInput);
         computerRocketInput = new ComputerInput();
@@ -27,6 +53,11 @@ public class GameEngine{
         System.out.println("");
     }
 
+    /**
+     * Executes a single turn of gameplay, alternating between user and computer.
+     *
+     * @return {@code true} if the game should continue, {@code false} if the game is over.
+     */
     public boolean playTurn() {
         String rocketPosition;
         try {
@@ -52,6 +83,12 @@ public class GameEngine{
         return checkGameOver();
     }
 
+    /**
+     * Processes the outcome of a turn, including updating the game state based on the position targeted.
+     *
+     * @param position The position targeted in this turn.
+     * @param playerType The type of player ("user" or "computer") taking the turn.
+     */
     private void processTurn(String position, String playerType) {
         int[] indexes = assignInputPosition.getIndexOf2DArray(position.toCharArray());
         int j = indexes[0];
@@ -108,6 +145,9 @@ public class GameEngine{
         assignInputPosition.printArray();
     }
 
+    /**
+     * Switches the current player turn, considering any skips due to grenade explosions.
+     */
     private void switchPlayer() {
         if (currentUser == 0 && !computerSkip) {
             currentUser = 1;
@@ -119,6 +159,11 @@ public class GameEngine{
         }
     }
 
+    /**
+     * Checks if the game is over by evaluating if any player has lost all their ships.
+     *
+     * @return {@code true} if the game should continue, {@code false} if the game is over.
+     */
     private boolean checkGameOver() {
         if (userTotalShips == 0 || computerTotalShips == 0) {
             return false;
