@@ -1,11 +1,19 @@
 import java.util.Objects;
 import java.util.Random;
 
-// -----------------------------------------------------
-// Assignment 1
-// &#169; Jenish Pravinbhai Akhed, Shruti Hiteshbhai Pavasiya
-// Written by: Jenish Pravinbhai Akhed (40270365), Shruti Hiteshbhai Pavasiya (40270486)
-// -----------------------------------------------------
+/**
+ * This class is a part of the submission for COMP249 Assignment 1.
+ * <p>
+ * Name(s) and ID(s):
+ * - Jenish Pravinbhai Akhed, 40270365
+ * - Shruti Hiteshbhai Pavasiya, 40270486
+ * <p>
+ * Assignment 1
+ * <p>
+ * Due Date: 16th February 2024
+ * <p>
+ * &#169; Jenish Pravinbhai Akhed, Shruti Hiteshbhai Pavasiya
+ */
 
 /**
  * Generates computer inputs for ship and grenade positions in the Battleship game.
